@@ -1,0 +1,251 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <style type="text/css">
+        @import url(//fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+        @import url(//fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+        
+        lead { font-family: 'Nanum Pen Script', cursive; }
+        son { font-family: 'Jeju Hallasan', serif; }
+      
+    </style>
+
+    <title>대학 소리꾼</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/heroic-features.css' %}" rel="stylesheet">
+    
+    <!-- dropdown CSS -->
+    <link href="{% static 'vendor/bootstrap/css/drop_down.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <div class = "dropdowncss">
+                <li class="nav-item active">
+                    <ul><a class="nav-link" href="#">소식<span class="sr-only">(current)</span></a>
+                    <dl class="submenu">
+                        <dt class = "drop1">
+                            <a class="nav-link" href = "sogae" >소개</a>
+                        </dt>
+                        <dt class = "drop2">
+                            <a class="nav-link" href = "notice" >공지 사항</a>
+                        </dt> 
+                    </dl>
+                      <!--      <a class="submenuLink longLink">안드로이드 앱 개발</a>-->
+                    </ul>
+                </li>
+              
+                </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="ranking">랭킹</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="uni_list">대학교 목록</a>
+                </li>
+                <a class="navbar-brand" href="https://practice-kl4314.c9users.io"><img src="{% static 'image/sorrgun-logo.png' %}"  width="350" height="100" ></a>
+                <div class = "dropdowncss">
+                    <li class="nav-item">
+                        <ul><a class="nav-link" href="#">이벤트</a>
+                            <dl class="submenu">
+                                <dt class = "drop1">
+                                    <a class="nav-link" href = "#" >아직 이벤트 기간이 아닙니다.</a>
+                                </dt>
+                            </dl>
+                        </ul>
+                    </li>
+                </div>
+              
+                    <div class = "dropdowncss">
+                            <li class="nav-item">
+                                <ul><a class="nav-link" href="#">노래 부르기</a>
+                                    <dl class="submenu">
+                                        <dt class = "drop1">
+                                            <a class="nav-link" href = "add_song" >내 노래 부르기</a>
+                                        </dt>
+                                        <dt class = "drop2">
+                                            <a class="nav-link" href = "mysong" >내가 부른 노래 확인</a>
+                                        </dt>
+                                       <!-- <dt class = "drop3">
+                                            <a class="nav-link" href = "#" >공지 사항</a>
+                                        </dt>  -->
+                                    </dl>
+                               </ul>
+                        </li>
+                </div>
+               
+            </ul>
+         
+        </div>
+    </nav>
+     <div style="background-image:url('{% static "image/sogae_background.jpg" %}'); background-size:cover;height:65%">
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Jumbotron Header -->
+        <br>
+        <br><br>
+        <div style="text-align:center">
+            <p class="son" style="font-size:60px;">내가 부른 노래</p>
+<!--수정--></div>
+           <!-- <a href="#" class="btn btn-primary btn-lg">자세히 알아보러 가기</a> -->
+    
+
+        <div style="text-align:right";>
+               <input type="text" placeholder="검색어입력">
+               <button><img src="http://appdata.hungryapp.co.kr/profile/201312/1387328743.png" width="30px" height="30px"/></button>
+        </div><br>
+           
+        <!-- Page Features -->
+       
+        <div class="row text-center">
+
+            <div class="col-lg-4 col-md-4 mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title">노래 제목</h4>
+                        <p class="card-text">설명을 입력해 주세요</p>
+                    </div>
+                    <div class="card-footer">
+                         <a href="#" class="btn btn-primary">수정</a> <a href="#" class="btn btn-primary">삭제</a>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title">노래 제목</h4>
+                        <p class="card-text">설명을 입력해 주세요</p>
+                    </div>
+                    <div class="card-footer">
+                         <a href="#" class="btn btn-primary">수정</a> <a href="#" class="btn btn-primary">삭제</a>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title">노래 제목</h4>
+                        <p class="card-text">설명을 입력해 주세요</p>
+                    </div>
+                    <div class="card-footer">
+                         <a href="#" class="btn btn-primary">수정</a> <a href="#" class="btn btn-primary">삭제</a>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title">노래 제목</h4>
+                        <p class="card-text">설명을 입력해 주세요</p>
+                    </div>
+                    <div class="card-footer">
+                         <a href="#" class="btn btn-primary">수정</a> <a href="#" class="btn btn-primary">삭제</a>
+
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-4 mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title">노래 제목</h4>
+                        <p class="card-text">설명을 입력해 주세요</p>
+                    </div>
+                    <div class="card-footer">
+                         <a href="#" class="btn btn-primary">수정</a> <a href="#" class="btn btn-primary">삭제</a>
+
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-4 mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title">노래 제목</h4>
+                        <p class="card-text">설명을 입력해 주세요</p>
+                    </div>
+                    <div class="card-footer">
+                         <a href="#" class="btn btn-primary">수정</a> <a href="#" class="btn btn-primary">삭제</a>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+
+    
+            <table><tr>
+                <td bgcolor='#FF9900' width=100>
+                    <b><img src="{% static 'image/chosun_likelion.jpg' %}" ></b>
+                    <td bgcolor='#FF9900' width=100>
+                        <div id="content" style="background-color:#FF9900;height:100px;width:700px;float:left;"><p class="m-0 text-center text-white" margin-top:50px;> <a href="http://chosun.likelion.org/"><span style="color:white">멋쟁이 사자처럼 조선대학교</span></a><br>
+                        E-mail:  kl4314@likelion.org<br>
+                        <a href="https://www.facebook.com/likelionchosun/?fref=ts!"><span style="color:white">페이스북</span></a><br>
+                        Make with Team Shout,2017 Web service  &copy;<br><span style="color:white">-멋사 5기 손성호</span>  </p>
+    </td>
+                        </td></table>
+    
+    
+    
+    
+    
+    
+    
+    
+
+              
+             
+        </div>
+        <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/popper/popper.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+</body>
+
+</html>
