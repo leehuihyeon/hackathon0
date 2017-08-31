@@ -1,0 +1,10 @@
+<form name="" class="" action="free_notice" method="post">
+            <div>제목</div> 
+            <input type="text" name="free_title" class="form-control" id = text></input>  
+            <div>내용</div>
+            <textarea name="free_contents" class="form-control" rows="10" id = textField> </textarea>
+        
+            {% csrf_token %}
+            </br>
+            <button type = "submit" name="submit" class="btn btn-info" id = button>등록하기</button>
+</form>

@@ -1,0 +1,129 @@
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>대학 소리꾼</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/heroic-features.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">소개<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="ranking">랭킹</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="uni_list">학교 별</a>
+                </li>
+                <a class="navbar-brand" href="https://practice-kl4314.c9users.io"><img src="{% static 'image/sorrgun-logo.png' %}"  width="350" height="100" ></a>
+                <div class = "dropdowncss">
+                    <li class="nav-item">
+                        <ul><a class="nav-link" href="#">이벤트</a>
+                            <dl class="submenu">
+                                <dt class = "drop1">
+                                    <a class="nav-link" href = "#" >아직 이벤트 기간이 아닙니다.</a>
+                                </dt>
+                            </dl>
+                        </ul>
+                    </li>
+                </div>
+                 <div class = "dropdowncss">
+                            <li class="nav-item">
+                                <ul><a class="nav-link" href="#">노래 부르기</a>
+                                    <dl class="submenu">
+                                        <dt class = "drop1">
+                                            <a class="nav-link" href = "add_song" >내 노래 부르기</a>
+                                        </dt>
+                                        <dt class = "drop2">
+                                            <a class="nav-link" href = "mysong" >내가 부른 노래 확인</a>
+                                        </dt>
+                                       <!-- <dt class = "drop3">
+                                            <a class="nav-link" href = "#" >공지 사항</a>
+                                        </dt>  -->
+                                    </dl>
+                               </ul>
+                        </li>
+                </div>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+        <br>
+                   <br><br>
+        <!-- Page Features -->
+        <p class="son" style="font-size:60px;color:#3562b2;">자유 게시판</p>
+        <div class="row text-center">
+            
+                <table class = "beauti-table" border = "1"> 
+              
+                        <tr style="background-color:#166af9;color:white;">
+                      
+                            <th class = "notice_th">제목</th>
+                            <th class = "notice_th1">작성자</th>
+                            <th class = "notice_th2">게시일</th>
+                        </tr>
+                        {% for freepost in freeposts %}
+          
+                        <tr style="background-color:#adcbff;color:white;">
+             
+                            <td class="notice_th"><a href="{% url 'postdetail' pk=freepost.pk %}">{{freepost.title}}</a></td>
+                            <td class="notice_th1">{{freepost.createuser}}</td>
+                            <td class="notice_th2">{{freepost.updatetime}}</td>
+                        </tr>
+                 
+                        {% endfor %}
+                </table>
+                
+                <a href="tosubmitpost" class="btn btn-primary btn-lg">등록 하러 가기</a>
+            
+                
+        </div>
+        
+        <!-- /.row -->
+
+    </div>
+    
+    
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+        </div>
+        <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/popper/popper.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+</body>
+
+</html>

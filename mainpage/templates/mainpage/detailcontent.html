@@ -1,0 +1,33 @@
+<table class = "beauti-table" border = "1"> 
+              
+                        <tr style="background-color:#166af9;color:white;">
+                      
+                            <th class = "notice_th">제목</th>
+                            <td class="notice_th">{{freeposts.title}}</td>
+                           
+                        </tr>
+          
+                        <tr style="background-color:#adcbff;color:white;">
+             
+                             <th class = "notice_th1">내용</th>
+                            <td class="notice_th1">{{freeposts.content}}</td>
+                           
+                        </tr>
+                        
+                         <tr style="background-color:#adcbff;color:white;">
+                              <th class = "notice_th2">게시일</th>
+                             <td class="notice_th2">{{freeposts.updatetime}}</td>
+                        </tr>
+</table>
+
+ <h5>댓글</h5>
+                        
+                        <a href = "{% url 'mainpage.views.comment_new' freeposts.pk %}">댓글쓰기</a> 
+                        <ul>
+                            {% for comment in freeposts.comment_set.all %}
+                                <li>
+                                    {{comment.message}}
+                                    <small>by {{comment.author}}, {{comment.created_at}}</small>
+                                </li>
+                            {% endfor %}
+                        </ul>

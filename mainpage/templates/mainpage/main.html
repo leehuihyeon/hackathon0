@@ -93,8 +93,8 @@
                 </div>
            
             </ul>
-            {% if name and email %}
-                {{name}}
+            {% if request.session.userid %}
+                {{ request.session.userid }}
             {% else %}
              <a href="signin" class="btn btn-primary">로그인</a>
             {% endif %}
@@ -109,6 +109,7 @@
             <p class="son" style="font-size:60px;">당신의 목소리를 들려주세요!</p>
             <p class="lead">여러분들이 가지고 있는 끼와 열정을 보여주세요. 누구나 참여할 수 있고 어떤 음악이든 좋습니다.<br> 온라인 상의 대학가요제를 만들어 봅시다!</p>
             <a href="sogae" class="btn btn-primary btn-lg">자세히 알아보러 가기</a>
+            <a href="free_board" class="btn btn-primary btn-lg">자유 게시판 가기</a>
         </header>
 
         <!-- Page Features -->
@@ -186,18 +187,7 @@
                         <a href="https://www.facebook.com/likelionchosun/?fref=ts!"><span style="color:white">페이스북</span></a><br>
                         Make with Team Shout,2017 Web service  &copy;<br><span style="color:white">-멋사 5기 손성호</span>  </p>
     </td>
-                        </td></table>
-    
-    
-    
-    
-    
-    
-    
-    
-
-              
-             
+     </td></table>
         </div>
         <!-- /.container -->
     </footer>

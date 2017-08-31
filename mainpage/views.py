@@ -1,9 +1,10 @@
 #-*- coding: utf-8 -*-
-from django.shortcuts import render
-from .models import Post, Uni, Singsong
+from django.shortcuts import render, redirect
+from .models import Post, Uni, Singsong, FreePost
 from django.contrib.auth.models import User
 from .models import User
 from django.contrib import messages
+from .forms import CommentForm
 # Create your views here.
 def index(request):
    
@@ -13,7 +14,8 @@ def sogae(request):
     return render(request, 'mainpage/sogae.html')  
     
 def logged_in(request):
-    userid=request.session['userid']
+    
+    userid=request.session.get('userid')
     userinfo=User.objects.filter(email=userid).values('name','email')
     userinfo_list = [entry for entry in userinfo]
     userinfo_dict={}
@@ -41,16 +43,19 @@ def notice(request):
     return render(request, 'mainpage/notice.html', context)
     
 def raking(request):
-    
     return render(request, 'mainpage/ranking.html')
+    
 def uni_list(request):
     uni_list = Uni.objects.all()
     context = {'uni_list': uni_list}
     return render(request, 'mainpage/uni_list.html', context)
+    
 def event(request):
     return render(request, 'mainpage/event.html')
+    
 def add_song(request):
     return render(request, 'mainpage/add_song.html')
+    
 def mysong(request):
     return render(request, 'mainpage/mysong.html')
     
@@ -85,9 +90,9 @@ def Signin(request):
         
         if check_password is True :
             
-            projects = User.objects.all()
             request.session['userid']=input_email
-            userdatas={'email' :input_email,'password':input_password, 'projects' : projects}
+            
+            userdatas={'email' :input_email,'password':input_password,}
             
             return render(request,'mainpage/main.html',userdatas)
         
@@ -118,3 +123,57 @@ def Register_song(request) :
     songdatas={'songdata':songdata}
     
     return render(request,'mainpage/login.html',songdatas)
+    
+
+def free_notice(request):
+    
+    freeposts = FreePost.objects.all()
+    context = {'freeposts' : freeposts}
+    return render(request, 'mainpage/free_board.html', context)
+    
+    
+def add_free_notice(request):
+    
+    createuser=request.session.get('userid')
+    title = request.POST.get('free_title')
+    content = request.POST.get('free_contents') 
+    
+    freepost = FreePost(
+        createuser = createuser,
+        title = title,
+        content = content
+    )
+    freepost.save()
+    
+    freeposts = FreePost.objects.all()
+    context = {'freeposts':freeposts}
+    
+    return render(request, 'mainpage/free_board.html', context)
+    
+def tosubmitpost(request):
+    
+    return render(request, 'mainpage/add_free_board.html')
+    
+def postdetail(request,pk):
+    
+   
+    freeposts = FreePost.objects.get(pk=pk)
+    context = {'freeposts':freeposts}
+    
+    return render(request, 'mainpage/detailcontent.html',context )
+    
+    
+
+def comment_new(request,pk):
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit = False)
+            comment.post = FreePost.objects.get(pk=pk)
+            comment.save()
+            return redirect('mainpage.views.postdetail',pk)
+            
+    else:
+            form = CommentForm()
+            
+    return render(request, 'mainpage/post_form.html',{'form':form})

@@ -2,7 +2,8 @@ from django.conf.urls import url, include
 from . import views
 urlpatterns = [
 
-    url(r'^$', views.index, name = 'index'),
+    url(r'^$', views.index, name = 'main'),
+    url(r'^$logged_in', views.logged_in, name = 'logged_in'),
     url(r'^sogae', views.sogae, name = 'sogae'),
     url(r'^notice', views.notice, name = 'notice'),
     url(r'^ranking', views.raking, name = 'ranking'),
@@ -13,5 +14,10 @@ urlpatterns = [
     url(r'^signup', views.Signup, name = 'signup'),
     url(r'^signin', views.Signin, name = 'signin'),
     url(r'^logged', views.logged_in, name = 'logged'),
-  
+    url(r'^free_notice', views.add_free_notice, name = 'add_free_notice'),
+    url(r'^free_board', views.free_notice, name = 'free_notice'),
+    url(r'^tosubmitpost', views.tosubmitpost, name = 'tosubmitpost'),
+    url(r'^(?P<pk>\d+)/$', views.postdetail, name = 'postdetail'),
+    url(r'^(?P<pk>\d+)/comment/new/$', views.comment_new),
+    
 ]

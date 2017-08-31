@@ -1,6 +1,5 @@
 #-*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
 from django.db import models
 
 # Create your models here.
@@ -17,7 +16,7 @@ class Post(models.Model):
 class Uni(models.Model):
     title = models.CharField(max_length = 30)
     
-    def __unicode__(self):
+    def __str__(self):
         return self.title
     
 class User(models.Model):
@@ -36,3 +35,20 @@ class Singsong(models.Model):
     
     def __str__(self):
         return self.title
+        
+        
+class FreePost(models.Model):
+    createuser = models.CharField(max_length = 30)
+    title = models.CharField(max_length = 30)
+    content = models.TextField()
+    updatetime = models.DateTimeField(auto_now_add = True)
+    
+    def __unicode__(self):
+        return self.title
+        
+class Comment(models.Model):
+    post = models.ForeignKey(FreePost)
+    author = models.CharField(max_length=10)
+    message = models.TextField()
+    create_at = models.DateTimeField(auto_now_add = True)
+    update_at = models.DateTimeField(auto_now = True)
